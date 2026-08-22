@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deborah & Yaakov</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8efe3;
+      font-family: Georgia, serif;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .page img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .menu-wrapper {
+      position: relative;
+    }
+
+    .menu-link {
+      position: absolute;
+      left: 20%;
+      width: 60%;
+      height: 10%;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .houppa-link {
+      top: 34%;
+    }
+
+    .response-link {
+      top: 53%;
+    }
+
+    .rsvp {
+      background: #f8efe3;
+      min-height: 100vh;
+      padding: 70px 8% 100px;
+      color: #b78a45;
+    }
+
+    .rsvp h2 {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .rsvp .subtitle {
+      text-align: center;
+      margin-bottom: 45px;
+      font-style: italic;
+      color: #9f743b;
+      font-size: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #c8a66f;
+      background: rgba(255,255,255,0.35);
+      border-radius: 6px;
+      font-size: 17px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .radio-line {
+      display: flex;
+      gap: 28px;
+      margin-top: 8px;
+    }
+
+    button {
+      display: block;
+      margin: 35px auto 0;
+      padding: 14px 42px;
+      border: none;
+      background: #b78a45;
+      color: white;
+      font-size: 19px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .thanks {
+      display: none;
+      text-align: center;
+      margin-top: 25px;
+      color: #9f743b;
+      font-size: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .rsvp h2 {
+        font-size: 34px;
+      }
+
+      .rsvp {
+        padding-left: 7%;
+        padding-right: 7%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+    <img src="Design sans titre.png" alt="Bienvenue Deborah et Yaakov">
+  </section>
+
+  <section class="page menu-wrapper">
+    <img src="25C24DFB-B14D-412C-A717-5432C18E0C26.png" alt="Menu invitation">
+
+    <a class="menu-link houppa-link" href="#houppa"></a>
+    <a class="menu-link response-link" href="#reponse"></a>
+  </section>
+
+  <section class="page" id="houppa">
+    <img src="8AB33913-A498-4240-9E5A-CF789240556F.png" alt="Houppa et réception">
+  </section>
+
+  <section class="rsvp" id="reponse">
+
+    <h2>Votre réponse</h2>
+
+    <p class="subtitle">
+      Merci de confirmer votre présence dès réception.
+    </p>
+
+    <form action="https://formsubmit.co/deborahzaffran@gmail.com" method="POST">
+
+      <input type="hidden" name="_subject" value="Nouvelle réponse mariage Deborah & Yaakov">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="form-group">
+        <label>Prénom *</label>
+        <input type="text" name="Prénom" required>
+      </div>
+
+      <div class="form-group">
+        <label>Nom de famille *</label>
+        <input type="text" name="Nom" required>
+      </div>
+
+      <div class="form-group">
+        <label>Assistera(ont) à la Houppa & Réception le 2 novembre 2026 ? *</label>
+
+        <div class="radio-line">
+          <label>
+            <input type="radio" name="Présence" value="Oui" required>
+            Oui
+          </label>
+
+          <label>
+            <input type="radio" name="Présence" value="Non">
+            Non
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Nombre de personnes présentes</label>
+        <input type="number" name="Nombre de personnes" min="1">
+      </div>
+
+      <div class="form-group">
+        <label>Laissez-nous un message</label>
+        <textarea name="Message"></textarea>
+      </div>
+
+      <button type="submit">Envoyer</button>
+
+    </form>
+
+  </section>
+
+</body>
+</html>

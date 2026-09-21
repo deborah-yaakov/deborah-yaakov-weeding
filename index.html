@@ -137,12 +137,175 @@
         padding-left: 7%;
         padding-right: 7%;
       }
-    }
+    } /* ===== PAGE D'ENTRÉE ===== */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(248, 239, 227, 0.97);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-box {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.intro-logo {
+  width: min(78vw, 320px);
+  max-width: 320px;
+  display: block;
+  margin: 0 auto 28px;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: introFadeUp 0.9s ease forwards;
+  animation-delay: 0.05s;
+}
+
+.intro-date {
+  margin-bottom: 22px;
+  font-size: 16px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b38a52;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: introFadeUp 0.9s ease forwards;
+  animation-delay: 0.25s;
+}
+
+.intro-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0 auto 26px;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: introFadeUp 0.9s ease forwards;
+  animation-delay: 0.45s;
+}
+
+.intro-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(179, 138, 82, 0.28);
+  border-radius: 16px;
+  padding: 14px 8px;
+}
+
+.intro-number {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  color: #9b7443;
+}
+
+.intro-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b38a52;
+}
+
+.intro-button {
+  appearance: none;
+  border: none;
+  background: linear-gradient(135deg, #d8b273, #b88a4a);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(184, 138, 74, 0.18);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: introFadeUp 0.9s ease forwards;
+  animation-delay: 0.65s;
+}
+
+@keyframes introFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-countdown {
+    gap: 8px;
+  }
+
+  .intro-card {
+    padding: 12px 6px;
+    border-radius: 14px;
+  }
+
+  .intro-number {
+    font-size: 21px;
+  }
+
+  .intro-label {
+    font-size: 10px;
+  }
+}
   </style>
 </head>
 
 <body>
+<div id="intro-overlay">
+  <div class="intro-box">
 
+    <img
+      src="Logo-dy.png.PNG"
+      alt="Logo Deborah et Yaakov"
+      class="intro-logo"
+    >
+
+    <div class="intro-date">02.11.2026</div>
+
+    <div class="intro-countdown">
+      <div class="intro-card">
+        <span class="intro-number" id="days">00</span>
+        <span class="intro-label">Jours</span>
+      </div>
+
+      <div class="intro-card">
+        <span class="intro-number" id="hours">00</span>
+        <span class="intro-label">Heures</span>
+      </div>
+
+      <div class="intro-card">
+        <span class="intro-number" id="minutes">00</span>
+        <span class="intro-label">Minutes</span>
+      </div>
+
+      <div class="intro-card">
+        <span class="intro-number" id="seconds">00</span>
+        <span class="intro-label">Secondes</span>
+      </div>
+    </div>
+
+    <button id="openInvitationBtn" class="intro-button">
+      Ouvrir l’invitation
+    </button>
+
+  </div>
+</div>
   <section class="page">
     <img src="Design sans titre.png" alt="Bienvenue Deborah et Yaakov">
   </section>
@@ -212,6 +375,50 @@
     </form>
 
   </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const overlay = document.getElementById("intro-overlay");
+  const openBtn = document.getElementById("openInvitationBtn");
 
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+
+  const targetDate = new Date("2026-11-02T19:30:00");
+
+  document.body.style.overflow = "hidden";
+
+  function updateCountdown() {
+    const now = new Date();
+    let diff = targetDate - now;
+
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    daysEl.textContent = String(days).padStart(2, "0");
+    hoursEl.textContent = String(hours).padStart(2, "0");
+    minutesEl.textContent = String(minutes).padStart(2, "0");
+    secondsEl.textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+
+  openBtn.addEventListener("click", function () {
+    overlay.classList.add("hidden");
+    document.body.style.overflow = "";
+
+    setTimeout(function () {
+      overlay.remove();
+      clearInterval(timer);
+    }, 650);
+  });
+});
+</script>
 </body>
 </html>

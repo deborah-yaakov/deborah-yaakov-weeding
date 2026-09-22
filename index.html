@@ -267,25 +267,39 @@
   position: relative;
 }
 
-.waze-address-link {
+.waze-pill {
   position: absolute;
-  left: 27%;
-  top: 65.5%;
-  width: 46%;
-  height: 10.5%;
-  z-index: 10;
-  cursor: pointer;
+  left: 50%;
+  top: 59%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid #b78a45;
+  border-radius: 999px;
+  background: rgba(251, 242, 229, 0.92);
+  color: #b78a45;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1;
+  z-index: 12;
 }
 
-.waze-address-link::after {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 0;
-  height: 1px;
-  background: #b78a45;
-  opacity: 0.8;
+.waze-pill-icon {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #b78a45;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.waze-pill:active {
+  transform: translateX(-50%) scale(0.98);
 }
   </style>
 </head>
@@ -346,12 +360,14 @@
        alt="Houppa et réception">
 
   <a
-    class="waze-address-link"
-    href="https://www.waze.com/live-map/directions/%D7%A2%D7%9C%D7%9E%D7%94%2C-%D7%91%D7%99%D7%AA-%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D-%D7%A9%D7%99%D7%96%D7%A3-3-%D7%90%D7%91%D7%9F-%D7%99%D7%94%D7%95%D7%93%D7%94?to=place.w.22872387.228658332.20387"
-    target="_blank"
-    rel="noopener"
-    aria-label="Ouvrir Salle Alma dans Waze">
-  </a>
+  class="waze-pill"
+  href="https://www.waze.com/live-map/directions/%D7%A2%D7%9C%D7%9E%D7%94%2C-%D7%91%D7%99%D7%AA-%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D-%D7%A9%D7%99%D7%96%D7%A3-3-%D7%90%D7%91%D7%9F-%D7%99%D7%94%D7%95%D7%93%D7%94?to=place.w.22872387.228658332.20387"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="waze-pill-icon">➜</span>
+  Itinéraire
+</a>
 </section>
 
   <section class="rsvp" id="reponse">

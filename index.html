@@ -17,7 +17,7 @@
     }
 
     body {
-      background: #f8efe3;
+      background: #f5ebdf;
       font-family: Georgia, serif;
     }
 
@@ -55,7 +55,7 @@
     }
 
     .rsvp {
-      background: #fbf2e5;
+      background: #f5ebdf;
       min-height: 100vh;
       padding: 70px 8% 100px;
       color: #b78a45;
@@ -92,7 +92,7 @@
       width: 100%;
       padding: 15px;
       border: 1px solid #c8a66f;
-      background: #fbf2e5;
+      background: #f5ebdf;
       border-radius: 6px;
       font-size: 17px;
     }
@@ -269,12 +269,23 @@
 
 .waze-address-link {
   position: absolute;
-  left: 20%;
-  top: 67%;
-  width: 60%;
+  left: 26%;
+  top: 55%;
+  width: 48%;
   height: 10%;
   z-index: 10;
   cursor: pointer;
+}
+
+.waze-address-link::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 5%;
+  height: 1px;
+  background: #b78a45;
+  opacity: 0.75;
 }
   </style>
 </head>
